@@ -16,7 +16,4 @@ Configured as per this repo https://github.com/robmarkcole/HASS-BBC-envirobit Wi
 2. SSH & Web Terminal with ipanel https://github.com/hassio-addons/addon-ssh/blob/v3.2.0/README.md
 3. MariaDB with recorder https://www.home-assistant.io/addons/mariadb/
 4. Samba share https://www.home-assistant.io/addons/samba/
-
-<p align="center">
-<img src="https://github.com/robmarkcole/robins-hassos-config/blob/master/images/addons.png" width="900">
-</p>
+5. Mosquitto MQTT broker: https://www.home-assistant.io/addons/mosquitto/
