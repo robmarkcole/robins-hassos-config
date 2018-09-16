@@ -1,6 +1,11 @@
 # robins-hassos-config
 My config for my HassOS instance. I had experimented with the 64 bit raspberry pi but have reverted to 32 bit after encountering multiple compatability issues with hassio addons.
 
+Currently I have a cheap USB camera and a BBC microbit connected to my pi.
+
+<p align="center">
+<img src="https://github.com/robmarkcole/robins-hassos-config/blob/master/images/setup.JPG" width="900">
+</p>
 
 ## BBC-microbit
 Configured as per this repo https://github.com/robmarkcole/HASS-BBC-envirobit Will be used as sensor node and remote control.
