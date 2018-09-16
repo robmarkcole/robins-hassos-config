@@ -1,5 +1,4 @@
 homeassistant:
-  # Name of the location where Home Assistant is running
   name: Home
   # Location required to calculate the time the sun rises and sets
   latitude: 0
@@ -10,34 +9,29 @@ homeassistant:
   unit_system: metric
   # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
   time_zone: UTC
-  # Customization file
   customize: !include customize.yaml
 
-# Enables the frontend
 frontend:
-
-# Enables configuration UI
 config:
-
-http:
-  # Secrets are defined in the file secrets.yaml
-  # api_password: !secret http_password
-
 updater:
-  # Optional, allows Home Assistant developers to focus on popular components.
-  # include_used_components: true
-# Discover some devices automatically
 discovery:
-# Allows you to issue voice commands from the frontend in enabled browsers
-conversation:
-# Enables support for tracking state changes over time
 history:
-# View all events in a logbook
 logbook:
-# Enables a map showing the location of tracked devices
 map:
-# Track the sun
 sun:
+
+group: !include groups.yaml
+automation: !include automations.yaml
+script: !include scripts.yaml
+
+camera:
+  - platform: local_file
+    file_path: /share/motion/latest.jpg
+    name: "Live view"
+  - platform: local_file
+    file_path: /share/motion/dummy.jpg
+    name: "dummy"
+
 
 binary_sensor:
   - platform: template
@@ -49,7 +43,9 @@ binary_sensor:
         friendly_name: Button_B_microbit
         value_template: "{{ states.sensor.serial_sensor.attributes.bb |float > 0}}"
 
+
 sensor:
+  - platform: yr
   - platform: serial
     serial_port: /dev/ttyACM0
     baudrate: 115200
@@ -74,20 +70,3 @@ history_graph:
       - sensor.temperature
       - sensor.pressure
       - sensor.humidity
-
-panel_iframe:
-  terminal:
-    title: Terminal
-    icon: mdi:console
-    url: http://hassio.local:7681/
-  configurator:
-    title: Configurator
-    icon: mdi:console
-    url: http://hassio.local:3218/
-
-recorder:
-  db_url: !secret maria_db_url
-
-group: !include groups.yaml
-automation: !include automations.yaml
-script: !include scripts.yaml
