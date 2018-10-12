@@ -22,4 +22,4 @@ Configured as per this repo https://github.com/robmarkcole/HASS-BBC-envirobit Wi
 4. MQTT Server & Web client: https://github.com/hassio-addons/addon-mqtt/blob/master/README.md
 5. MariaDB with recorder for database server: https://www.home-assistant.io/addons/mariadb/
 6. Motion camera detection: https://github.com/HerrHofrat/hassio-addons
-7. esphomeyaml for DIY devices: https://github.com/OttoWinter/esphomeyaml
+7. esphomelib for DIY devices: https://esphomelib.com/esphomeyaml/index.html#features
