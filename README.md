@@ -19,6 +19,7 @@ Configured as per this repo https://github.com/robmarkcole/HASS-BBC-envirobit Wi
 1. Configurator with ipanel https://www.home-assistant.io/addons/configurator
 2. SSH & Web Terminal with ipanel https://github.com/hassio-addons/addon-ssh/blob/v3.2.0/README.md
 3. Samba share https://www.home-assistant.io/addons/samba/
-4. Mosquitto MQTT broker: https://www.home-assistant.io/addons/mosquitto/
-5. MariaDB with recorder https://www.home-assistant.io/addons/mariadb/
-6. Motion camera detection https://github.com/HerrHofrat/hassio-addons
+4. MQTT Server & Web client: https://github.com/hassio-addons/addon-mqtt/blob/master/README.md
+5. MariaDB with recorder for database server: https://www.home-assistant.io/addons/mariadb/
+6. Motion camera detection: https://github.com/HerrHofrat/hassio-addons
+7. esphomeyaml for DIY devices: https://github.com/OttoWinter/esphomeyaml
