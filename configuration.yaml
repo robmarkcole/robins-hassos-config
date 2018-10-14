@@ -1,8 +1,8 @@
 homeassistant:
   name: Home
   # Location required to calculate the time the sun rises and sets
-  latitude: 0
-  longitude: 0
+  latitude: !secret home_latitude
+  longitude: !secret home_longitude
   # Impacts weather/sunrise data (altitude above sea level in meters)
   elevation: 0
   # metric for Metric, imperial for Imperial
@@ -23,6 +23,13 @@ sun:
 group: !include groups.yaml
 automation: !include automations.yaml
 script: !include scripts.yaml
+
+mqtt:
+  discovery: true
+  broker: 192.168.1.84
+  port: 1884
+  username: robin
+  password: !secret mqtt_password
 
 camera:
   - platform: local_file
@@ -70,3 +77,13 @@ history_graph:
       - sensor.temperature
       - sensor.pressure
       - sensor.humidity
+
+image_processing:
+  - platform: clarifai_general
+    api_key: !secret clarifai_apikey
+    scan_interval: 10000
+    source:
+      - entity_id: camera.live_view
+    concepts:
+      - people
+      - vehicle
