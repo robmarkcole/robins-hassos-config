@@ -1,11 +1,4 @@
 homeassistant:
-  name: Home
-  # Location required to calculate the time the sun rises and sets
-  latitude: !secret home_latitude
-  longitude: !secret home_longitude
-  # Impacts weather/sunrise data (altitude above sea level in meters)
-  elevation: 0
-  # metric for Metric, imperial for Imperial
   unit_system: metric
   # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
   time_zone: UTC
@@ -18,7 +11,6 @@ discovery:
 history:
 logbook:
 map:
-sun:
 
 group: !include groups.yaml
 automation: !include automations.yaml
@@ -87,3 +79,14 @@ image_processing:
     concepts:
       - people
       - vehicle
+
+
+zone:
+  # This will override the default home zone
+  - name: Home
+    latitude: !secret home_latitude
+    longitude: !secret home_longitude
+    elevation: 39
+    unit_system: metric
+    time_zone: Europe/London
+    radius: 200
