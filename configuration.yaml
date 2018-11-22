@@ -19,7 +19,7 @@ script: !include scripts.yaml
 mqtt:
   discovery: true
   broker: 192.168.1.84
-  port: 1884
+  port: 1883
   username: robin
   password: !secret mqtt_password
 
@@ -31,55 +31,58 @@ camera:
     file_path: /share/motion/dummy.jpg
     name: "dummy"
 
-
-binary_sensor:
-  - platform: template
-    sensors:
-      button_a:
-        friendly_name: Button_A_microbit
-        value_template: "{{ states.sensor.serial_sensor.attributes.ba |float > 0}}"
-      button_b:
-        friendly_name: Button_B_microbit
-        value_template: "{{ states.sensor.serial_sensor.attributes.bb |float > 0}}"
-
-
 sensor:
   - platform: yr
-  - platform: serial
-    serial_port: /dev/ttyACM0
-    baudrate: 115200
-  - platform: template
-    sensors:
-      temperature:
-        friendly_name: Temperature_microbit
-        unit_of_measurement: "°C"
-        value_template: "{{ states.sensor.serial_sensor.attributes.T }}"
-      pressure:
-        friendly_name: Pressure_microbit
-        unit_of_measurement: "hPa"
-        value_template: "{{ states.sensor.serial_sensor.attributes.P }}"
-      humidity:
-        friendly_name: Humidity_microbit
-        unit_of_measurement: "%"
-        value_template: "{{ states.sensor.serial_sensor.attributes.H }}"
-
-history_graph:
-  microbit:
-    entities:
-      - sensor.temperature
-      - sensor.pressure
-      - sensor.humidity
+  - platform: mqtt
+    name: particles_03um
+    state_topic: "wipy/"
+    value_template: "{{ value_json.particles_03um }}"
+    unit_of_measurement: 03um
+  - platform: mqtt
+    name: particles_05um
+    state_topic: "wipy/"
+    value_template: "{{ value_json.particles_05um }}"
+    unit_of_measurement: 05um
+  - platform: mqtt
+    name: particles_10um
+    state_topic: "wipy/"
+    value_template: "{{ value_json.particles_10um }}"
+    unit_of_measurement: 10um
+  - platform: mqtt
+    name: particles_25um
+    state_topic: "wipy/"
+    value_template: "{{ value_json.particles_25um }}"
+    unit_of_measurement: 25um
+  - platform: mqtt
+    name: particles_50um
+    state_topic: "wipy/"
+    value_template: "{{ value_json.particles_50um }}"
+    unit_of_measurement: 50um
+  - platform: mqtt
+    name: particles_100um
+    state_topic: "wipy/"
+    value_template: "{{ value_json.particles_100um }}"
+    unit_of_measurement: 100um_foo
 
 image_processing:
-  - platform: clarifai_general
-    api_key: !secret clarifai_apikey
-    scan_interval: 10000
-    source:
-      - entity_id: camera.live_view
-    concepts:
-      - people
-      - vehicle
+ - platform: tensorflow
+   scan_interval: 20000
+   source:
+     - entity_id: camera.live_view
+   model:
+     model_dir: /config/tensorflow
+     graph: /config/tensorflow/ssd_mobilenet_v2_coco_2018_03_29/frozen_inference_graph.pb
+     labels: /config/tensorflow/object_detection/data/mscoco_label_map.pbtxt
 
+panel_iframe:
+  ssh:
+    title: SSH
+    icon: mdi:wrench
+    url: http://hassio.local:7681
+  ide:
+    title: IDE
+    icon: mdi:code-braces
+    url: http://hassio.local:8321
 
 zone:
   # This will override the default home zone

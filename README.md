@@ -1,13 +1,16 @@
-# robins-hassos-config
-My config for my HassOS instance. I had experimented with the 64 bit raspberry pi but have reverted to 32 bit after encountering multiple compatability issues with hassio addons.
+## Overview
+My config for my HassOS instance. Mostly I am using this server for development work and projects.
 
+Note: I had experimented with the 64 bit raspberry pi but have reverted to 32 bit after encountering multiple compatability issues with hassio addons.
+
+## Hardware
 Currently I have a cheap USB camera and a BBC microbit connected to my pi.
 
 <p align="center">
 <img src="https://github.com/robmarkcole/robins-hassos-config/blob/master/images/setup.JPG" width="900">
 </p>
 
-## BBC-microbit
+#### BBC-microbit
 Configured as per this repo https://github.com/robmarkcole/HASS-BBC-envirobit Will be used as sensor node and remote control.
 
 <p align="center">
@@ -20,4 +23,3 @@ Try to limit your addons, as too many will make your system unstable.
 2. SSH & Web Terminal -> SSH backup:  https://github.com/hassio-addons/addon-ssh/blob/v3.2.0/README.md
 3. MQTT Server & Web client: https://github.com/hassio-addons/addon-mqtt/blob/master/README.md
 4. Motion camera detection: https://github.com/HerrHofrat/hassio-addons
-5. Portainer: https://github.com/hassio-addons/addon-portainer
