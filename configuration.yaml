@@ -11,10 +11,17 @@ discovery:
 history:
 logbook:
 map:
+cloud:
 
 group: !include groups.yaml
 automation: !include automations.yaml
 script: !include scripts.yaml
+
+logger:
+  default: info
+
+recorder:
+  db_url: !secret mariadb_url
 
 mqtt:
   discovery: true
@@ -64,16 +71,6 @@ sensor:
     value_template: "{{ value_json.particles_100um }}"
     unit_of_measurement: 100um_foo
 
-image_processing:
- - platform: tensorflow
-   scan_interval: 20000
-   source:
-     - entity_id: camera.live_view
-   model:
-     model_dir: /config/tensorflow
-     graph: /config/tensorflow/ssd_mobilenet_v2_coco_2018_03_29/frozen_inference_graph.pb
-     labels: /config/tensorflow/object_detection/data/mscoco_label_map.pbtxt
-
 panel_iframe:
   ssh:
     title: SSH
@@ -83,6 +80,26 @@ panel_iframe:
     title: IDE
     icon: mdi:code-braces
     url: http://hassio.local:8321
+  portainer:
+    title: Portainer
+    icon: mdi:docker
+    url: http://hassio.local:9000
+  jupyter:
+    title: Jupyter
+    icon: mdi:code-braces
+    url: http://hassio.local:7777
+  bokeh:
+    title: Bokeh
+    icon: mdi:code-braces
+    url: http://hassio.local:8123/local/barplot.html
+  sqliteweb:
+    title: SQLite Web
+    icon: mdi:database
+    url: https://hassio.local:6210
+  logviewer:
+    title: Log viewer
+    icon: mdi:code-braces
+    url: https://hassio.local:4277
 
 zone:
   # This will override the default home zone
@@ -92,4 +109,4 @@ zone:
     elevation: 39
     unit_system: metric
     time_zone: Europe/London
-    radius: 200
+    radius: 1000

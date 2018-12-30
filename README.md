@@ -23,3 +23,7 @@ Try to limit your addons, as too many will make your system unstable.
 2. SSH & Web Terminal -> SSH backup:  https://github.com/hassio-addons/addon-ssh/blob/v3.2.0/README.md
 3. MQTT Server & Web client: https://github.com/hassio-addons/addon-mqtt/blob/master/README.md
 4. Motion camera detection: https://github.com/HerrHofrat/hassio-addons
+5. Portainer: https://github.com/hassio-addons/addon-portainer
+6. Jupyterlab Lite: https://github.com/hassio-addons/addon-jupyterlab-lite
+7. Log Viewer: https://github.com/hassio-addons/addon-log-viewer
+8. MariaDB: https://www.home-assistant.io/addons/mariadb/
