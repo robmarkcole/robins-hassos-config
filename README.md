@@ -19,11 +19,11 @@ Configured as per this repo https://github.com/robmarkcole/HASS-BBC-envirobit Wi
 
 ## Add-ons
 Try to limit your addons, as too many will make your system unstable.
-1. IDE -> replaces samba & configurator: https://github.com/hassio-addons/addon-ide
-2. SSH & Web Terminal -> SSH backup:  https://github.com/hassio-addons/addon-ssh/blob/v3.2.0/README.md
+1. IDE: https://github.com/hassio-addons/addon-ide
+2. SSH & Web Terminal:  https://github.com/hassio-addons/addon-ssh/blob/v3.2.0/README.md
 3. MQTT Server & Web client: https://github.com/hassio-addons/addon-mqtt/blob/master/README.md
 4. Motion camera detection: https://github.com/HerrHofrat/hassio-addons
-5. Portainer: https://github.com/hassio-addons/addon-portainer
+5. Portainer: https://github.com/hassio-addons/addon-portainer (mostly unused)
 6. Jupyterlab Lite: https://github.com/hassio-addons/addon-jupyterlab-lite
 7. Log Viewer: https://github.com/hassio-addons/addon-log-viewer
-8. MariaDB: https://www.home-assistant.io/addons/mariadb/
+8. MariaDB: https://www.home-assistant.io/addons/mariadb/ (for testing)
