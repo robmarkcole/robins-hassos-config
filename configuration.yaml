@@ -20,9 +20,6 @@ script: !include scripts.yaml
 logger:
   default: info
 
-recorder:
-  db_url: !secret mariadb_url
-
 mqtt:
   discovery: true
   broker: 192.168.1.84
@@ -38,38 +35,12 @@ camera:
     file_path: /share/motion/dummy.jpg
     name: "dummy"
 
+device_tracker:
+  - platform: hue
+
 sensor:
   - platform: yr
-  - platform: mqtt
-    name: particles_03um
-    state_topic: "wipy/"
-    value_template: "{{ value_json.particles_03um }}"
-    unit_of_measurement: 03um
-  - platform: mqtt
-    name: particles_05um
-    state_topic: "wipy/"
-    value_template: "{{ value_json.particles_05um }}"
-    unit_of_measurement: 05um
-  - platform: mqtt
-    name: particles_10um
-    state_topic: "wipy/"
-    value_template: "{{ value_json.particles_10um }}"
-    unit_of_measurement: 10um
-  - platform: mqtt
-    name: particles_25um
-    state_topic: "wipy/"
-    value_template: "{{ value_json.particles_25um }}"
-    unit_of_measurement: 25um
-  - platform: mqtt
-    name: particles_50um
-    state_topic: "wipy/"
-    value_template: "{{ value_json.particles_50um }}"
-    unit_of_measurement: 50um
-  - platform: mqtt
-    name: particles_100um
-    state_topic: "wipy/"
-    value_template: "{{ value_json.particles_100um }}"
-    unit_of_measurement: 100um_foo
+  - platform: hue
 
 panel_iframe:
   ssh:
@@ -80,26 +51,14 @@ panel_iframe:
     title: IDE
     icon: mdi:code-braces
     url: http://hassio.local:8321
-  portainer:
-    title: Portainer
-    icon: mdi:docker
-    url: http://hassio.local:9000
   jupyter:
     title: Jupyter
     icon: mdi:code-braces
     url: http://hassio.local:7777
-  bokeh:
-    title: Bokeh
-    icon: mdi:code-braces
-    url: http://hassio.local:8123/local/barplot.html
-  sqliteweb:
-    title: SQLite Web
-    icon: mdi:database
-    url: https://hassio.local:6210
-  logviewer:
-    title: Log viewer
-    icon: mdi:code-braces
-    url: https://hassio.local:4277
+  glances:
+    title: Glances
+    icon: mdi:speedometer
+    url: http://hassio.local:61208
 
 zone:
   # This will override the default home zone
